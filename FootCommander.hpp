@@ -1,3 +1,4 @@
+#pragma once
 #include "Soldier.hpp"
 #include "Commander.hpp"
 #include <typeinfo>

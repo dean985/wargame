@@ -1,17 +1,21 @@
 #pragma once
 #include "Soldier.hpp"
+namespace WarGame
+{
 
-class FootSoldier : public Soldier{
+    class FootSoldier : public WarGame::Soldier
+    {
     public:
-    FootSoldier(uint team) : Soldier(100, 10, team){
-        
-    }
-    ~FootSoldier();
-    void move(WarGame::Board &, WarGame::Board::MoveDIR);
-};
+        FootSoldier(uint team) : Soldier(100, 10, team)
+        {
+        }
+        // void move(WarGame::Board &, WarGame::Board::MoveDIR);
+    };
 
 
-FootSoldier::~FootSoldier(){
-    Soldier::~Soldier();
-}
+    // void FootSoldier::move(WarGame::Board &, WarGame::Board::MoveDIR)
+    // {
+    //     return;
+    // }
 
+} 

@@ -5,7 +5,8 @@
 namespace WarGame
 {
 
-    class FootCommander : public WarGame::Soldier, public WarGame::Commander
+    // class FootCommander : public WarGame::Soldier, public WarGame::Commander
+    class FootCommander : public WarGame::Soldier
     {
     public:
         FootCommander(uint team) : Soldier(150, 50, team) {}

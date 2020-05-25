@@ -8,14 +8,13 @@ namespace WarGame
         // operator for putting soldiers on the game-board during initialization.
         Soldier *&Board::operator[](std::pair<int, int> location)
         {
-            Soldier *s = nullptr;
-            return s;
+            return this->board[location.first][location.second];
         }
 
         // operator for reading which soldiers are on the game-board.
         Soldier *Board::operator[](std::pair<int, int> location) const
         {
-            Soldier *s = nullptr;
+            Soldier *s = new WarGame::Soldier(1,2,3);
             return s;
         }
 

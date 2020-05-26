@@ -3,16 +3,14 @@
 
 namespace WarGame
 {
-    class Paramedic : public Soldier 
+    class Paramedic : public Soldier
     {
-        public:
+    public:
+        Paramedic(uint team) : Soldier(100, 50, team) {}
+        Paramedic(uint hp, uint dpa, uint team) : Soldier(hp, dpa, team) {}
+        virtual void move(WarGame::Board &, WarGame::Board::MoveDIR);
 
-            Paramedic(uint team) : Soldier(100, 50, team){
-        
-            }
-            
-            // void move(WarGame::Board &, WarGame::Board::MoveDIR){
-            //     return;
-            // }
+        void move(WarGame::Board &, WarGame::Board::MoveDIR);
     };
-}
+    
+} 

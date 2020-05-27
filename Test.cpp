@@ -92,23 +92,23 @@ TEST_CASE("Test for The boards Functions")
 
 TEST_CASE("Test for The FootSoldier Functions")
 {
-    Board board(10,10);
-    board[{5,4}] = new FootSoldier(1);
-    board[{7,1}] = new FootSoldier(2);
-    board[{0,3}] = new FootCommander(1);
-    board[{7,3}] = new FootCommander(2);
+    Board board(10, 10);
+    board[{5, 4}] = new FootSoldier(1);
+    board[{7, 1}] = new FootSoldier(2);
+    board[{0, 3}] = new FootCommander(1);
+    board[{7, 3}] = new FootCommander(2);
 
-    board[{0,5}] = new FootSoldier(1);
-    board[{7,5}] = new FootSoldier(2);
+    board[{0, 5}] = new FootSoldier(1);
+    board[{7, 5}] = new FootSoldier(2);
 
-    board[{1,7}] = new FootSoldier(1);
-    board[{4,4}] = new FootSoldier(2);
+    board[{1, 7}] = new FootSoldier(1);
+    board[{4, 4}] = new FootSoldier(2);
 
     board[{2, 2}] = new FootSoldier(1);
     board[{6, 6}] = new FootCommander(2);
 
-    board[{0,7}] = new FootSoldier(1);
-    board[{0,0}] = new FootSoldier(2);
+    board[{0, 7}] = new FootSoldier(1);
+    board[{0, 0}] = new FootSoldier(2);
 
     CHECK(board[{5, 4}]->_team == 1);
     CHECK(board[{0, 3}]->_team == 1);
@@ -219,6 +219,17 @@ TEST_CASE("General Test for other situations")
     CHECK_THROWS(board.move(1, {-10, -21}, Board::Right));
     CHECK_THROWS(board.move(1, {-10, -2}, Board::Up));
     CHECK_THROWS(board.move(1, {92, 33}, Board::Down));
+    CHECK_THROWS(board.move(1, {546, 3}, Board::Down));
+    CHECK_THROWS(board.move(1, {-345, -3}, Board::Right));
+    CHECK_THROWS(board.move(1, {-1220, -2}, Board::Up));
+    CHECK_THROWS(board.move(1, {1, 45}, Board::Down));
+    CHECK_THROWS(board.move(1, {455, 3}, Board::Down));
+    CHECK_THROWS(board.move(1, {-5, -6}, Board::Right));
+    CHECK_THROWS(board.move(1, {-4, -7}, Board::Up));
+    CHECK_THROWS(board.move(1, {92, 33}, Board::Down));
+    CHECK_THROWS(board.move(1, {8, 77}, Board::Up));
+    CHECK_THROWS(board.move(1, {1, 2438}, Board::Up));
+    CHECK_THROWS(board.move(2, {3304, 166}, Board::Left));
 
 }
 }

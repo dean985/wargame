@@ -260,12 +260,45 @@ TEST_CASE("Test for The paramedicCommander Functions")
  //13
 }
 TEST_CASE("Test for The sniper Functions")
-{
-    
+{           Board b = game1();
+        Board c = game2();
+ //1
+       CHECK(b[{2,1}]->_hp==200); 
+
+ //2
+       CHECK(b[{2,1}]->_dpa==0); 
+
+ //3
+       CHECK(b[{2,1}]->_team== 1 ); 
+
+ //4
+       CHECK(b[{2,1}]-> _commander==true); 
+
+ //5
+       CHECK(b[{2,1}]-> _specialty== Soldier::role::Paramedic); 
+
+ //6
 }
 TEST_CASE("Test for The sniperCommander Functions")
 {
-    
+                Board b = game1();
+        Board c = game2();
+ //1
+       CHECK(b[{2,1}]->_hp==200); 
+
+ //2
+       CHECK(b[{2,1}]->_dpa==0); 
+
+ //3
+       CHECK(b[{2,1}]->_team== 1 ); 
+
+ //4
+       CHECK(b[{2,1}]-> _commander==true); 
+
+ //5
+       CHECK(b[{2,1}]-> _specialty== Soldier::role::Paramedic); 
+
+ //6
 }
 TEST_CASE("General Test for other situations")
 {

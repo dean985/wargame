@@ -1,16 +1,20 @@
 #pragma once
 #include "Soldier.hpp"
 
-namespace WarGame
+class Paramedic : public Soldier
 {
-    class Paramedic : public Soldier
-    {
-    public:
-        Paramedic(uint team) : Soldier(100, 50, team) {}
-        Paramedic(uint hp, uint dpa, uint team) : Soldier(hp, dpa, team) {}
-        virtual void move(WarGame::Board &, WarGame::Board::MoveDIR);
+    const int maxLife = 100;
 
-        void move(WarGame::Board &, WarGame::Board::MoveDIR);
-    };
-    
-} 
+public:
+    Paramedic(int team) : Soldier(maxLife, 50, role::Paramedic, false, team) {}
+
+    virtual void hit(std::vector<std::vector<Soldier *>> &board, std::pair<int, int> source) override
+    {
+        return;
+    }
+
+    void heal()
+    {
+        _hp = maxLife;
+    }
+};

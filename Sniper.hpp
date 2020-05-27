@@ -1,17 +1,20 @@
+#pragma once
 #include "Soldier.hpp"
 
-namespace WarGame
+class Sniper : public Soldier
 {
-    class Sniper : public Soldier 
-    {
-        public:
+    const int maxLife = 100;
 
-            Sniper(uint team) : Soldier(100, 50, team){
-        
-            }
-            
-            // void move(WarGame::Board &, WarGame::Board::MoveDIR){
-            //     return;
-            // }
-    };
-}
+public:
+    Sniper(int team) : Soldier(maxLife, 50, role::Paramedic, false, team) {}
+
+    virtual void hit(std::vector<std::vector<Soldier *>> &board, std::pair<int, int> source) override
+    {
+        return;
+    }
+
+    void heal()
+    {
+        _hp = maxLife;
+    }
+};

@@ -6,7 +6,7 @@ class SniperCommander : public Soldier
     const int maxLife = 120;
 
 public:
-    SniperCommander(int team) : Soldier(maxLife, 100, role::Sniper, true, team) {}
+    SniperCommander(int team) : Soldier(120, 100, role::Sniper, true, team) {}
   virtual void hit(Board &board, std::pair<int, int> source)
     {
         return;

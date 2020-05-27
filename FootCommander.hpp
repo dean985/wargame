@@ -6,7 +6,7 @@ class FootCommander : public Soldier
     static const int maxLife = 150;
 
 public:
-    FootCommander(int team) : Soldier(maxLife, 20, role::Foot, true, team) {}
+    FootCommander(int team) : Soldier(150, 20, role::Foot, true, team) {}
 
     virtual void hit(Board &board, std::pair<int, int> source) override
         {

@@ -20,4 +20,5 @@ namespace WarGame{
     bool Board::has_soldiers(uint player_number) const{
         return false;
     }
+    
 }

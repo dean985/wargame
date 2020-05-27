@@ -10,6 +10,14 @@
 #include "DemoGame.hpp"
 #include "Board.hpp"
 
+/*
+
+about 8 Testcases
+
+thats mean 13 tests for each testcase
+
+*/
+
 WarGame::Board game1()
 {
     WarGame::Board board(10, 10);
@@ -28,4 +36,38 @@ WarGame::Board game1()
     board[{8, 3}] = new WarGame::Paramedic(2);
     board.showBoard();
     return board;
+}
+
+TEST_CASE("Test for The boards Functions")
+{
+    
+}
+
+TEST_CASE("Test for The FootSoldier Functions")
+{
+    
+}
+TEST_CASE("Test for The FootCommander Functions")
+{
+    
+}
+TEST_CASE("Test for The paramedic Functions")
+{
+    
+}
+TEST_CASE("Test for The paramedicCommander Functions")
+{
+    
+}
+TEST_CASE("Test for The sniper Functions")
+{
+    
+}
+TEST_CASE("Test for The sniperCommander Functions")
+{
+    
+}
+TEST_CASE("General Test for other situations")
+{
+    
 }

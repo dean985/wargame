@@ -7,6 +7,10 @@ class ParamedicCommander : public Soldier
 
 public:
     ParamedicCommander(int team) : Soldier(maxLife, 100, role::Paramedic, true, team) {}
+  virtual void hit(Board &board, std::pair<int, int> source)
+    {
+        return;
+    }
 
     virtual void hit(std::vector<std::vector<Soldier *>> &board, std::pair<int, int> source) override
     {

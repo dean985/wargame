@@ -8,6 +8,12 @@ class FootSoldier : public Soldier
 public:
     FootSoldier(int team) : Soldier( maxLife, 10, role::Foot, false, team) {}
 
+        virtual void hit(Board &board, std::pair<int, int> source) override
+        {
+            return;
+        }
+
+
     virtual void hit(std::vector<std::vector<Soldier *>> &board, std::pair<int, int> source) override
     {
         return;

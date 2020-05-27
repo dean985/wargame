@@ -20,5 +20,13 @@ namespace WarGame{
     bool Board::has_soldiers(uint player_number) const{
         return false;
     }
-    
+    // void Board::showBoard()
+    // {
+        
+    //     int row = this->board.size();
+    //     int col = this->board.size();
+    //     for (int i = 0; i < count; i++) {
+    //         /* code */
+    //     }
+    // }
 }

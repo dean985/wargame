@@ -22,7 +22,7 @@ public:
     Soldier(int hp, int dpa, role specialty, bool commander, int team) : _hp(hp), _dpa(dpa), _team(team), _specialty(specialty), _commander(commander) {}
 
     virtual void hit(Board &board, std::pair<int, int> source) = 0;
-   // virtual void hit(std::vector<std::vector<Soldier *>> &board, std::pair<int, int> source) = 0;
+    virtual void hit(std::vector<std::vector<Soldier *>> &board, std::pair<int, int> source) = 0;
 
     virtual void heal() = 0;
     //     void print_board(std::vector<std::vector<Soldier*>> &board,std::pair<int,int> source){

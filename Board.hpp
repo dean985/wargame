@@ -7,7 +7,7 @@
  * @author Erel Segal-Halevi
  * @since  2020-05
  */
-
+#pragma once
 #include <string>
 #include <vector>
 #include <stdexcept>

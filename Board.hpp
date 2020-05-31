@@ -32,7 +32,8 @@ class Board {
     void move(uint player_number, std::pair<int,int> source, MoveDIR direction);
 
     bool has_soldiers(uint player_number) const;
-    
+
+    void showBoard();
 
 };
 

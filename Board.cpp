@@ -9,6 +9,7 @@ namespace WarGame
 {
     Soldier *&Board::operator[](std::pair<int, int> location)
     {
+        
         return this->board[location.first][location.second];
     }
 
@@ -19,6 +20,39 @@ namespace WarGame
 
     void Board::move(uint player_number, std::pair<int, int> source, MoveDIR direction)
     {
+        std::pair<int,int> next_location;
+        if(this->board[source.first][source.second] == nullptr)
+        {
+            std::cout << "no soldier on this area!" << std::endl;
+            return;
+        }
+        else
+        {// check if the choosen soldire is from the player_number
+            if((*this)[source]->_team != player_number)
+            {
+                std::cout << "the soldier is not on player "<<player_number <<" team!" << std::endl;
+                return;
+            }
+            else{
+                // now we need to check where we move and if is it avilible
+                switch(direction) {
+                        case Up:
+                               // if(
+                            break;
+                        case Down:
+                        // code block
+                            break;
+                        case Right:
+                            // code block
+                            break;
+                        case Left:
+                        
+                            break;
+                        default:
+                            std::cout << "unrecognized direction" << std::endl;
+                    }   
+            }
+        }
         return;
     }
 

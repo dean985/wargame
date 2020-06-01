@@ -7,15 +7,15 @@ class Paramedic : public Soldier
 
 public:
     Paramedic(int team) : Soldier(100, 50, role::Paramedic, false, team) {}
-    virtual void hit(std::vector<std::vector<Soldier*>> &board, std::pair<int,int> source) override
+    virtual void hit(std::vector<std::vector<Soldier *>> &board, std::pair<int, int> source) override
     {
-        for (int i = source.first - 1; i < source.first + 2 && i < board.size() ; i++)
+        for (int i = source.first - 1; i < source.first + 2 && i < board.size(); i++)
         {
             if (i < 0)
             {
                 i = 0;
             }
-            
+
             for (int j = source.second - 1; j < source.second + 2 && j < board[i].size(); j++)
             {
                 if (j < 0)
@@ -27,21 +27,13 @@ public:
                 {
                     continue;
                 }
-                if(board[i][j] != nullptr && board[i][j]->_team == this->_team){
+                if (board[i][j] != nullptr && board[i][j]->_team == this->_team)
+                {
                     board[i][j]->heal();
                 }
-                // if (board[i].at(j) != nullptr && board[i].at(j)->_team == this->_team)
-                // {
-                //     board[i].at(j)->heal();
-                // }
             }
         }
     }
-
-    // virtual void hit(std::vector<std::vector<Soldier *>> &board, std::pair<int, int> source) override
-    // {
-    //     return;
-    // }
 
     void heal() override
     {

@@ -60,49 +60,58 @@ namespace WarGame
     {
         return false;
     }
+
     void Board::showBoard()
     {
         std::vector<std::string> summary;
         for (int i = 0; i < board.size(); i++)
         {
-            for (int j = 0; j < board[i].size(); j++){
+            for (int j = 0; j < board[i].size(); j++)
+            {
                 Soldier *current = board[i].at(j);
-                if(current){
+                if (current)
+                {
                     int life = current->_hp;
                     Soldier::role job = current->_specialty;
                     int team = current->_team;
                     std::string info;
-                    switch (job){
-                        case Soldier::Foot :
-                            info = "F" + std::to_string(team);
-                            break;
-                        case Soldier::Paramedic :
-                            info = "P" + std::to_string(team);
-                            break;
-                        case Soldier::Sniper :
-                            info = "S" + std::to_string(team);
-                            break;
+                    switch (job)
+                    {
+                    case Soldier::Foot:
+                        info = "F" + std::to_string(team);
+                        break;
+                    case Soldier::Paramedic:
+                        info = "P" + std::to_string(team);
+                        break;
+                    case Soldier::Sniper:
+                        info = "S" + std::to_string(team);
+                        break;
                     }
-                    if (current->_commander){
+                    if (current->_commander)
+                    {
                         info += "C";
-                        std::cout <<"|" <<info;
+                        std::cout << "|" << info;
                     }
-                    else{
-                        std::cout <<"|" <<info << " ";
-                    } 
-                    std::string data = std::to_string(i) + "," + std::to_string(j)+" ";
+                    else
+                    {
+                        std::cout << "|" << info << " ";
+                    }
+                    std::string data = std::to_string(i) + "," + std::to_string(j) + " ";
                     data += info + " = " + std::to_string(life);
                     summary.push_back(data);
                     data = "";
-                }else{
+                }
+                else
+                {
                     std::cout << "|   ";
                 }
             }
             std::cout << std::endl;
         }
         std::cout << std::endl;
-        for (int i = 0; i < summary.size(); i++){
+        for (int i = 0; i < summary.size(); i++)
+        {
             std::cout << summary[i] << std::endl;
         }
     }
-} 
+} // namespace WarGame

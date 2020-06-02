@@ -20,7 +20,8 @@ namespace WarGame
   {
   private:
     std::vector<std::vector<Soldier *>> board;
-
+    int player_1_soldiers = 0;
+    int player_2_soldiers = 0;
   public:
     enum MoveDIR
     {
@@ -41,6 +42,7 @@ namespace WarGame
     bool has_soldiers(uint player_number) const;
 
     void showBoard();
+    
   };
 
 } // namespace WarGame

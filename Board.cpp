@@ -4,6 +4,8 @@
 #include "Soldier.hpp"
 #include "Board.hpp"
 #include <iostream>
+#include <unistd.h>
+
 typedef unsigned int uint;
 namespace WarGame
 {
@@ -12,7 +14,8 @@ namespace WarGame
         
         return this->board[location.first][location.second];
     }
-
+    
+ 
     Soldier *Board::operator[](std::pair<int, int> location) const
     {
         return this->board[location.first][location.second];
@@ -37,27 +40,115 @@ namespace WarGame
                 // now we need to check where we move and if is it avilible
                 switch(direction) {
                         case Up:
-                               // if(
+                            if(this->board.size()-1< source.first+1)
+                            {
+                                std::cout << "can't reach the destination" << std::endl;
+                                return;
+                            }
+                            else
+                            {
+                                if((*this)[{source.first+1,source.second}] != nullptr)
+                                {
+                                    std::cout << "can't reach the destination" << std::endl;
+                                    return;
+                                }
+                                else{
+                                    (*this)[{source.first+1,source.second}] = (*this)[{source.first,source.second}];
+                                    (*this)[{source.first,source.second}] = nullptr;
+                                }
+                            }
                             break;
                         case Down:
-                        // code block
+                            if(0 > source.first-1)
+                            {
+                                std::cout << "can't reach the destination" << std::endl;
+                                return;
+                            }
+                            else
+                            {
+                                if((*this)[{source.first-1,source.second}] != nullptr)
+                                {
+                                    std::cout << "can't reach the destination" << std::endl;
+                                    return;
+                                }
+                                else{
+                                    (*this)[{source.first-1,source.second}] = (*this)[{source.first,source.second}];
+                                    (*this)[{source.first,source.second}] = nullptr;
+                                }
+                            }
                             break;
                         case Right:
-                            // code block
+                            if(this->board[0].size()-1 > source.second + 1)
+                            {
+                                std::cout << "can't reach the destination" << std::endl;
+                                return;
+                            }
+                            else
+                            {
+                                if((*this)[{source.first,source.second+1}] != nullptr)
+                                {
+                                    std::cout << "can't reach the destination" << std::endl;
+                                    return;
+                                }
+                                else{
+                                    (*this)[{source.first,source.second+1}] = (*this)[{source.first,source.second}];
+                                    (*this)[{source.first,source.second}] = nullptr;
+                                }
+                            }
                             break;
                         case Left:
-                        
+                            if(0 > source.second - 1)
+                            {
+                                std::cout << "can't reach the destination" << std::endl;
+                                return;
+                            }
+                            else
+                            {
+                                if((*this)[{source.first,source.second-1}] != nullptr)
+                                {
+                                    std::cout << "can't reach the destination" << std::endl;
+                                    return;
+                                }
+                                else{
+                                    (*this)[{source.first,source.second-1}] = (*this)[{source.first,source.second}];
+                                    (*this)[{source.first,source.second}] = nullptr;
+                                }
+                            }
                             break;
                         default:
                             std::cout << "unrecognized direction" << std::endl;
                     }   
             }
         }
+        
+        std::cout << direction << "\n" << std::endl;
+        this->showBoard();
+        
+        /// here I call the hit!
+        
         return;
     }
 
+  
+
     bool Board::has_soldiers(uint player_number) const
     {
+        
+
+         for (int i = 0; i < board.size(); i++)
+        {
+            for (int j = 0; j < board[i].size(); j++)
+            {
+                Soldier *current = board[i].at(j);
+                if(current != nullptr)
+                {
+                    if(current->_team == player_number)
+                        return true;
+                    
+                }
+            }
+            
+        }
         return false;
     }
 
@@ -113,5 +204,7 @@ namespace WarGame
         {
             std::cout << summary[i] << std::endl;
         }
+        
+        usleep(500000);
     }
 } // namespace WarGame

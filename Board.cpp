@@ -23,6 +23,7 @@ namespace WarGame
 
     void Board::move(uint player_number, std::pair<int, int> source, MoveDIR direction)
     {
+        
         std::pair<int,int> next_location;
         if(this->board[source.first][source.second] == nullptr)
         {
@@ -53,8 +54,10 @@ namespace WarGame
                                     return;
                                 }
                                 else{
-                                    (*this)[{source.first+1,source.second}] = (*this)[{source.first,source.second}];
-                                    (*this)[{source.first,source.second}] = nullptr;
+                                    next_location.first = source.first+1;
+                                    next_location.second = source.second;
+                                    
+                                 
                                 }
                             }
                             break;
@@ -72,13 +75,15 @@ namespace WarGame
                                     return;
                                 }
                                 else{
-                                    (*this)[{source.first-1,source.second}] = (*this)[{source.first,source.second}];
-                                    (*this)[{source.first,source.second}] = nullptr;
+                                    
+                                    next_location.first = source.first-1;
+                                    next_location.second = source.second;
+                        
                                 }
                             }
                             break;
                         case Right:
-                            if(this->board[0].size()-1 > source.second + 1)
+                            if(this->board[0].size()-1< source.second + 1)
                             {
                                 std::cout << "can't reach the destination" << std::endl;
                                 return;
@@ -91,8 +96,9 @@ namespace WarGame
                                     return;
                                 }
                                 else{
-                                    (*this)[{source.first,source.second+1}] = (*this)[{source.first,source.second}];
-                                    (*this)[{source.first,source.second}] = nullptr;
+                                    next_location.first = source.first;
+                                    next_location.second = source.second+1;
+                                 
                                 }
                             }
                             break;
@@ -110,8 +116,9 @@ namespace WarGame
                                     return;
                                 }
                                 else{
-                                    (*this)[{source.first,source.second-1}] = (*this)[{source.first,source.second}];
-                                    (*this)[{source.first,source.second}] = nullptr;
+                                    next_location.first = source.first;
+                                    next_location.second = source.second-1;
+        
                                 }
                             }
                             break;
@@ -119,9 +126,12 @@ namespace WarGame
                             std::cout << "unrecognized direction" << std::endl;
                     }   
             }
+               (*this)[next_location] = (*this)[source];
+                (*this)[source] = nullptr;
         }
-        
+        (*this)[next_location]->hit(this->board,next_location); 
         std::cout << direction << "\n" << std::endl;
+         
         this->showBoard();
         
         /// here I call the hit!

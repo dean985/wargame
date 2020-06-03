@@ -129,7 +129,12 @@ namespace WarGame
                (*this)[next_location] = (*this)[source];
                 (*this)[source] = nullptr;
         }
-        (*this)[next_location]->hit(this->board,next_location); 
+        try{
+            (*this)[next_location]->hit(this->board,next_location); 
+        }
+        catch(...){
+            
+        }
         std::cout << direction << "\n" << std::endl;
          
         this->showBoard();

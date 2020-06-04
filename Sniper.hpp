@@ -8,6 +8,11 @@ class Sniper : public Soldier
 
 public:
     Sniper(int team) : Soldier(100, 50, role::Sniper, false, team) {}
+    
+    ~Sniper()
+    {
+        
+    }
 
     virtual void hit(std::vector<std::vector<Soldier *>> &board, std::pair<int, int> source) override
     {
@@ -26,7 +31,6 @@ public:
                       max_location_life.first = i;
                       max_location_life.second = j;
                       max_life = current->_hp;
-                        
                     }
                 }
             }
@@ -35,6 +39,11 @@ public:
         Soldier *Atteker = board[source.first].at(source.second);
         Soldier *Victim = board[max_location_life.first].at(max_location_life.second);
         Victim->_hp = Victim->_hp - Atteker->_dpa;
+        
+        if(Victim->_hp < 0)
+        {
+            // call distructor
+        }
         
         return;
     }

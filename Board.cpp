@@ -1,3 +1,4 @@
+
 #include <string>
 #include <vector>
 #include <stdexcept>
@@ -132,8 +133,13 @@ namespace WarGame
                 (*this)[source] = nullptr;
                  Soldier *a = (*this)[source];
         }
-        
-        (*this)[next_location]->hit(this->board,next_location); 
+
+        try{
+            (*this)[next_location]->hit(this->board,next_location); 
+        }
+        catch(...){
+            
+        }
         std::cout << direction << "\n" << std::endl;
          
         this->showBoard();
@@ -221,4 +227,5 @@ namespace WarGame
         
         usleep(500000);
     }
+
 } // namespace WarGame

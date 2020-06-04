@@ -130,13 +130,13 @@ namespace WarGame
                     std::cout << "unrecognized direction" << std::endl;
                 }
             }
-            // (*this)[next_location] = (*this)[source];
+            (*this)[next_location] = (*this)[source];
             newLocation = this->board[next_location.first][next_location.second];
-            oldLocation = this->board[source.first][source.second];
+            // oldLocation = this->board[source.first][source.second];
 
-            newLocation = oldLocation;
-            oldLocation = nullptr;
-            // (*this)[source] = nullptr;
+            // newLocation = oldLocation;
+            // oldLocation = nullptr;
+            (*this)[source] = nullptr;
             // Soldier *a = (*this)[source];
             try
             {
@@ -153,14 +153,14 @@ namespace WarGame
             {
             }
         }
-        throw std::invalid_argument("Problem with moving");
+       // throw std::invalid_argument("Problem with moving");
 
         return;
     }
 
     bool Board::has_soldiers(uint player_number) const
     {
-
+        bool existFlag = false;
         for (int i = 0; i < board.size(); i++)
         {
             for (int j = 0; j < board[i].size(); j++)
@@ -169,7 +169,7 @@ namespace WarGame
                 if (current != nullptr)
                 {
                     if (current->_team == player_number)
-                        return true;
+                        existFlag = true;
                 }
             }
         }

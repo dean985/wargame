@@ -26,5 +26,8 @@ public:
 
     virtual void heal() = 0;
     
-    virtual ~Soldier() {}
+    virtual ~Soldier()
+    {
+        
+    }
 };

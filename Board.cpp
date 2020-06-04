@@ -29,14 +29,17 @@ namespace WarGame
         std::pair<int,int> next_location;
         if(this->board[source.first][source.second] == nullptr)
         {
-            std::cout << "no soldier on this area!" << std::endl;
+            throw "no soldier on this area!";
+           // std::cout << "no soldier on this area!" << std::endl;
             return;
         }
         else
         {// check if the choosen soldire is from the player_number
             if((*this)[source]->_team != player_number)
             {
-                std::cout << "the soldier is not on player "<<player_number <<" team!" << std::endl;
+                throw "the soldier is not on player  team!";
+
+                //std::cout << "the soldier is not on player "<<player_number <<" team!" << std::endl;
                 return;
             }
             else{
@@ -45,6 +48,7 @@ namespace WarGame
                         case Up:
                             if(this->board.size()-1< source.first+1)
                             {
+                                //throw "can't reach the destination" ;
                                 std::cout << "can't reach the destination" << std::endl;
                                 return;
                             }
@@ -52,7 +56,8 @@ namespace WarGame
                             {
                                 if((*this)[{source.first+1,source.second}] != nullptr)
                                 {
-                                    std::cout << "can't reach the destination" << std::endl;
+                                    throw "can't reach the destination" ;
+                                   // std::cout << "can't reach the destination" << std::endl;
                                     return;
                                 }
                                 else{
@@ -66,14 +71,17 @@ namespace WarGame
                         case Down:
                             if(0 > source.first-1)
                             {
-                                std::cout << "can't reach the destination" << std::endl;
+                                 throw "can't reach the destination" ;
+
+                                //std::cout << "can't reach the destination" << std::endl;
                                 return;
                             }
                             else
                             {
                                 if((*this)[{source.first-1,source.second}] != nullptr)
                                 {
-                                    std::cout << "can't reach the destination" << std::endl;
+                                    throw "can't reach the destination" ;
+                                    //std::cout << "can't reach the destination" << std::endl;
                                     return;
                                 }
                                 else{
@@ -87,14 +95,16 @@ namespace WarGame
                         case Right:
                             if(this->board[0].size()-1< source.second + 1)
                             {
-                                std::cout << "can't reach the destination" << std::endl;
+                                throw "can't reach the destination" ;
+                                //std::cout << "can't reach the destination" << std::endl;
                                 return;
                             }
                             else
                             {
                                 if((*this)[{source.first,source.second+1}] != nullptr)
                                 {
-                                    std::cout << "can't reach the destination" << std::endl;
+                                    throw "can't reach the destination" ;
+                                    //std::cout << "can't reach the destination" << std::endl;
                                     return;
                                 }
                                 else{
@@ -107,14 +117,16 @@ namespace WarGame
                         case Left:
                             if(0 > source.second - 1)
                             {
-                                std::cout << "can't reach the destination" << std::endl;
+                                throw "can't reach the destination" ;
+                                //std::cout << "can't reach the destination" << std::endl;
                                 return;
                             }
                             else
                             {
                                 if((*this)[{source.first,source.second-1}] != nullptr)
                                 {
-                                    std::cout << "can't reach the destination" << std::endl;
+                                    throw "can't reach the destination" ;
+                                    //std::cout << "can't reach the destination" << std::endl;
                                     return;
                                 }
                                 else{
@@ -125,13 +137,13 @@ namespace WarGame
                             }
                             break;
                         default:
+                        
                             std::cout << "unrecognized direction" << std::endl;
                     }   
             }
                  (*this)[next_location] = (*this)[source];
                
                 (*this)[source] = nullptr;
-                 Soldier *a = (*this)[source];
         }
 
         try{
@@ -140,11 +152,9 @@ namespace WarGame
         catch(...){
             
         }
-        std::cout << direction << "\n" << std::endl;
-         
+    
         this->showBoard();
-        
-        /// here I call the hit!
+
         
         return;
     }
@@ -153,7 +163,7 @@ namespace WarGame
 
     bool Board::has_soldiers(uint player_number) const
     {
-        
+        bool existFlag = false;
 
          for (int i = 0; i < board.size(); i++)
         {
@@ -163,13 +173,12 @@ namespace WarGame
                 if(current != nullptr)
                 {
                     if(current->_team == player_number)
-                        return true;
-                    
+                        existFlag = true;
                 }
             }
             
         }
-        return false;
+        return existFlag;
     }
 
     void Board::showBoard()
@@ -225,7 +234,8 @@ namespace WarGame
             std::cout << summary[i] << std::endl;
         }
         
-        usleep(500000);
+        //usleep(500000);
     }
 
+ 
 } // namespace WarGame

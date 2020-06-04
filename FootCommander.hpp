@@ -15,11 +15,15 @@ public:
             for (int j = 0; j < board[i].size(); j++)
             {
                 Soldier *current = board[i][j];
-                if (!current)
+                if (!current){
                     continue;
-                if (current->_specialty == role::Foot && current->_team == this->_team)
-                {
-                    current->hit(board, source);
+                    
+                }
+                else{
+                    if (current->_specialty == role::Foot && current->_team == this->_team)
+                    {
+                        current->hit(board, source);
+                    }
                 }
             }
         }

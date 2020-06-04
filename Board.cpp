@@ -3,8 +3,9 @@
 #include <stdexcept>
 #include "Soldier.hpp"
 #include "Board.hpp"
-#include <iostream>
 #include <unistd.h>
+#include <iostream>
+
 
 typedef unsigned int uint;
 namespace WarGame
@@ -126,9 +127,12 @@ namespace WarGame
                             std::cout << "unrecognized direction" << std::endl;
                     }   
             }
-               (*this)[next_location] = (*this)[source];
+                 (*this)[next_location] = (*this)[source];
+               
                 (*this)[source] = nullptr;
+                 Soldier *a = (*this)[source];
         }
+        
         (*this)[next_location]->hit(this->board,next_location); 
         std::cout << direction << "\n" << std::endl;
          

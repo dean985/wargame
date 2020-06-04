@@ -38,7 +38,7 @@ namespace WarGame
             if ((*this)[source]->_team != player_number)
             {
                 std::cout << "the soldier is not on player " << player_number << " team!" << std::endl;
-                return;
+                throw std::invalid_argument("");
             }
             else
             {
@@ -49,14 +49,14 @@ namespace WarGame
                     if (this->board.size() - 1 < source.first + 1)
                     {
                         std::cout << "can't reach the destination" << std::endl;
-                        return;
+                        throw std::invalid_argument("");
                     }
                     else
                     {
                         if ((*this)[{source.first + 1, source.second}] != nullptr)
                         {
                             std::cout << "can't reach the destination" << std::endl;
-                            return;
+                            throw std::invalid_argument("");
                         }
                         else
                         {
@@ -69,14 +69,14 @@ namespace WarGame
                     if (0 > source.first - 1)
                     {
                         std::cout << "can't reach the destination" << std::endl;
-                        return;
+                        throw std::invalid_argument("");
                     }
                     else
                     {
                         if ((*this)[{source.first - 1, source.second}] != nullptr)
                         {
                             std::cout << "can't reach the destination" << std::endl;
-                            return;
+                            throw std::invalid_argument("");
                         }
                         else
                         {
@@ -90,14 +90,14 @@ namespace WarGame
                     if (this->board[0].size() - 1 < source.second + 1)
                     {
                         std::cout << "can't reach the destination" << std::endl;
-                        return;
+                        throw std::invalid_argument("");
                     }
                     else
                     {
                         if ((*this)[{source.first, source.second + 1}] != nullptr)
                         {
                             std::cout << "can't reach the destination" << std::endl;
-                            return;
+                            throw std::invalid_argument("");
                         }
                         else
                         {
@@ -110,14 +110,14 @@ namespace WarGame
                     if (0 > source.second - 1)
                     {
                         std::cout << "can't reach the destination" << std::endl;
-                        return;
+                        throw std::invalid_argument("");
                     }
                     else
                     {
                         if ((*this)[{source.first, source.second - 1}] != nullptr)
                         {
                             std::cout << "can't reach the destination" << std::endl;
-                            return;
+                            throw std::invalid_argument("");
                         }
                         else
                         {
@@ -128,6 +128,7 @@ namespace WarGame
                     break;
                 default:
                     std::cout << "unrecognized direction" << std::endl;
+                    throw std::invalid_argument("");
                 }
             }
             (*this)[next_location] = (*this)[source];

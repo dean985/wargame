@@ -27,16 +27,17 @@ public:
                 }
             }
         }
-
         Soldier *Atteker = board[source.first].at(source.second);
         Soldier *Victim = board[max_location_life.first].at(max_location_life.second);
-        Victim->_hp = Victim->_hp - Atteker->_dpa;
-
-        if (Victim->_hp < 0)
+        if (Victim)
         {
-            board[max_location_life.first].at(max_location_life.second) = nullptr;
-            delete Victim;
+            Victim->_hp = Victim->_hp - Atteker->_dpa;
 
+            if (Victim->_hp < 0)
+            {
+                board[max_location_life.first].at(max_location_life.second) = nullptr;
+                delete Victim;
+            }
         }
 
         return;

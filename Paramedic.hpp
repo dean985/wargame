@@ -34,6 +34,9 @@ public:
             }
         }
     }
+    virtual void hitAll(std::vector<std::vector<Soldier *>> &board, std::pair<int, int> source) override{
+
+    }
 
     void heal() override
     {

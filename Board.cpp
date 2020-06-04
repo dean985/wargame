@@ -27,6 +27,11 @@ namespace WarGame
         std::pair<int, int> next_location = source;
         Soldier *newLocation;
         Soldier *oldLocation;
+
+        if (source.first > this->board.size()-1 || source.second > this->board[0].size()){
+            throw "Out of bounds";
+        }
+
         if (this->board[source.first][source.second] == nullptr)
         {
             throw "no soldier on this area!";

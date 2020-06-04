@@ -26,5 +26,8 @@ public:
     virtual void hitAll(std::vector<std::vector<Soldier *>> &board, std::pair<int, int> source) = 0;
     virtual void heal() = 0;
     
-    virtual ~Soldier() {}
+    virtual ~Soldier()
+    {
+        
+    }
 };

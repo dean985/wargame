@@ -29,7 +29,8 @@ namespace WarGame
         Soldier *oldLocation;
         if (this->board[source.first][source.second] == nullptr)
         {
-            std::cout << "no soldier on this area!" << std::endl;
+            throw "no soldier on this area!";
+           // std::cout << "no soldier on this area!" << std::endl;
             return;
         }
         else
@@ -172,7 +173,7 @@ namespace WarGame
                 }
             }
         }
-        return false;
+        return existFlag;
     }
 
     void Board::showBoard()
@@ -231,4 +232,5 @@ namespace WarGame
         usleep(500000);
     }
 
+ 
 } // namespace WarGame

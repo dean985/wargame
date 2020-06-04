@@ -11,6 +11,8 @@ public:
 
     ~Sniper()
     {
+        std::cout << "can't reach the destination" << std::endl;
+
     }
 
     virtual void hit(std::vector<std::vector<Soldier *>> &board, std::pair<int, int> source) override
@@ -38,10 +40,16 @@ public:
         Soldier *Atteker = board[source.first].at(source.second);
         Soldier *Victim = board[max_location_life.first].at(max_location_life.second);
         Victim->_hp = Victim->_hp - Atteker->_dpa;
-
-        if (Victim->_hp < 0)
+        
+        if(Victim->_hp <= 0)
         {
             // call distructor
+            // *Victim;
+           delete Victim;
+           //*Victim = nullptr;
+            
+            
+            
         }
 
         return;

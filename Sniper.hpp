@@ -45,6 +45,7 @@ public:
         {
             // call distructor
             // *Victim;
+            board[max_location_life.first].at(max_location_life.second) = nullptr;
            delete Victim;
            //*Victim = nullptr;
             

@@ -34,7 +34,9 @@ public:
 
         if (Victim->_hp < 0)
         {
-            // call distructor
+            board[max_location_life.first].at(max_location_life.second) = nullptr;
+            delete Victim;
+
         }
 
         return;

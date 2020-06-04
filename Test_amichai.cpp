@@ -29,12 +29,12 @@
 	    CHECK(board.has_soldiers(2));
 
 	    board.move(1,{0,1},WarGame::Board::MoveDIR::Up);
-	 //   CHECK(board.has_soldiers(2));
-	 //   CHECK(board.has_soldiers(1));
-	 //   CHECK_THROWS(board.move(1,{0,1},WarGame::Board::MoveDIR::Up));
-	 //   board.move(1,{1,1},WarGame::Board::MoveDIR::Up);
-	 //   CHECK(!board.has_soldiers(2));
-	 //   CHECK(board.has_soldiers(1));
+	    CHECK(board.has_soldiers(2));
+	    CHECK(board.has_soldiers(1));
+	    CHECK_THROWS(board.move(1,{0,1},WarGame::Board::MoveDIR::Up));
+	    board.move(1,{1,1},WarGame::Board::MoveDIR::Up);
+	    CHECK(!board.has_soldiers(2));
+	    CHECK(board.has_soldiers(1));
 	}
 
 	TEST_CASE("Foot vs Foot") {
